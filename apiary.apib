@@ -1,0 +1,275 @@
+FORMAT: 1A
+HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
+
+# QUICK-COFFEE: API администратора
+
+Управление поставщиками, торговыми точками и меню
+
+##  Поставщики [/Quick/QuickAdmin.svc/supplier]
+
+
+### Список поставщиков [GET]
++ Request 
+
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": [
+                {
+                  "supplierid": 2,
+                  "name": "Кафе Куриные потроха Ext 2.0",
+                  "description": "Отборные куриные головы и лапки",
+                  "sitelink": "http://kokoko.ru",
+                  "places": [
+                    {
+                      "placeid": 1,
+                      "address": "ул. Богдана Титомира 11",
+                      "latitude": 55.76844400,
+                      "longitude": 37.65074300
+                    },
+                    {
+                      "placeid": 3,
+                      "address": "ул. Богдана Титомира 11",
+                      "latitude": 55.76844400,
+                      "longitude": 37.65074300
+                    }
+                  ]
+                },
+                {
+                  "supplierid": 5,
+                  "name": "Авто Кафе 1",
+                  "description": "Отборные куриные головы и лапки",
+                  "sitelink": "http://kokoko1.ru",
+                  "places": []
+                },
+                {
+                  "supplierid": 7,
+                  "name": "Кафе Куриные потроха Ext",
+                  "description": "Отборные куриные головы и лапки",
+                  "sitelink": "http://kokoko.ru",
+                  "places": []
+                }
+              ]
+            }
+
+
+### Добавить поставщика [POST]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {  
+               "name":"Кафе Куриные потроха Ext 2.0",
+               "description":"Отборные куриные головы и лапки",
+               "sitelink":"http://kokoko.com.ru"
+            }
+            
++ Response 201 (application/json; charset=utf-8)
+
+            {
+              "data": {
+                "supplierid": 6
+              }
+            }
+
+
+##  Работа с поставщиком [/Quick/QuickAdmin.svc/supplier/{supplierId}]
++ Parameters
+    + supplierId: `1` (number, required) - idenfifier
+
+
+### Получить информацию [GET]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {  
+               "data":[  
+                  {  
+                     "supplierid":2,
+                     "name":"Кафе Куриные потроха Ext 2.0",
+                     "description":"Отборные куриные головы и лапки",
+                     "sitelink":"http://kokoko.ru",
+                     "places":[  
+                        {  
+                           "placeid":1,
+                           "address":"ул. Богдана Титомира 11",
+                           "latitude":55.76844400,
+                           "longitude":37.65074300
+                        },
+                        {  
+                           "placeid":4,
+                           "address":"ул. Богдана Титомира 11",
+                           "latitude":55.76844400,
+                           "longitude":37.65074300
+                        }
+                     ]
+                  }
+               ]
+            }
+
+
+### Обновить информацию [PUT]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {  
+               "supplierid":2,
+               "name":"Кафе Куриные потроха Ext 3.0",
+               "description":"Отборные куриные головы и лапки",
+               "sitelink":"http://kokoko.com.ru"
+            }
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "message": "OK"
+            }
+
+
+### Удалить поставщика [DELETE]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "message": "OK"
+            }
+
+
+##  Торговые точки поставщика [/Quick/QuickAdmin.svc/supplier/{supplierId}/place]
++ Parameters
+    + supplierId: `1` (number, required) - idenfifier
+
+
+### Список точек [GET]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": [
+                {
+                  "placeid": 4,
+                  "address": "ул. Богдана Титомира 11",
+                  "latitude": 55.76844400,
+                  "longitude": 37.65074300
+                },
+                {
+                  "placeid": 5,
+                  "address": "ул. Богдана Титомира 11",
+                  "latitude": 55.76844400,
+                  "longitude": 37.65074300
+                }
+              ]
+            }
+
+### Добавить точку [POST]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {  
+               "name":"Кафе Куриные потроха Ext 2.0",
+               "description":"Отборные куриные головы и лапки",
+               "sitelink":"http://kokoko.com.ru"
+            }
+            
++ Response 201 (application/json; charset=utf-8)
+
+            {
+              "data": {
+                "placeid": 15
+              }
+            }
+
+
+##  Работа с торговой точкой [/Quick/QuickAdmin.svc/supplier/{supplierId}/place/{placeId}]
++ Parameters
+    + supplierId: `1` (number, required) - idenfifier
+    + placeId: `1` (number, required) - idenfifier
+
+
+### Получить информацию [GET]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": [
+                {
+                  "address": "ул. Богдана Титомира 11",
+                  "latitude": 55.76844400,
+                  "longitude": 37.65074300
+                }
+              ]
+            }
+
+
+### Обновить информацию [PUT]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {
+              "address": "ул. Богдана Титомира 199",
+              "latitude": 55.76844400,
+              "longitude": 37.65074300
+            }
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "message": "OK"
+            }
+
+
+### Удалить торговую точку [DELETE]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "message": "OK"
+            }

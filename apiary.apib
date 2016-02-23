@@ -289,3 +289,139 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             {
               "message": "OK"
             }
+
+
+##  Товары поставщика [/admin/supplier/{supplierId}/item]
++ Parameters
+    + supplierId: `1` (number, required) - idenfifier
+
+
+### Список товаров [GET]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": [
+                {
+                  "itemid": 2,
+                  "name": "БигМак маленький",
+                  "description": "Всё на булочке с кунжутом",
+                  "price": 100
+                },
+                {
+                  "itemid": 3,
+                  "name": "name",
+                  "description": "d",
+                  "price": 1000
+                },
+                {
+                  "itemid": 4,
+                  "name": "БигМак маленький",
+                  "description": "Всё на булочке с кунжутом",
+                  "price": 500
+                },
+                {
+                  "itemid": 1,
+                  "name": "БигМак",
+                  "description": "Всё на булочке с кунжутом",
+                  "price": 10000
+                }
+              ]
+            }
+
+### Добавить товар [POST]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {
+              "name": "БигМак маленький!",
+              "description": "Всё на булочке с кунжутом",
+              "price": 500
+            }
+            
++ Response 201 (application/json; charset=utf-8)
+
+            {
+              "data": {
+                "itemId": 5,
+                "name": "БигМак маленький!",
+                "description": "Всё на булочке с кунжутом",
+                "price": 500
+              }
+            }
+
+
+##  Работа с товарами поставщика [/admin/supplier/{supplierId}/item/{itemId}]
++ Parameters
+    + supplierId: `1` (number, required) - idenfifier
+    + itemId: `1` (number, required) - idenfifier
+
+
+### Получить информацию [GET]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": {
+                "itemid": 1,
+                "name": "БигМак",
+                "description": "Всё на булочке с кунжутом",
+                "price": 10000
+              }
+            }
+
+
+### Обновить информацию [PUT]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
+    + Body
+
+            {
+              "name": "БигМак",
+              "description": "Всё на булочке с кунжутом",
+              "price": 10000
+            }
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "data": {
+                "itemId": 0,
+                "name": "БигМак",
+                "description": "Всё на булочке с кунжутом",
+                "price": 10000
+              }
+            }
+
+
+### Удалить товар [DELETE]
++ Request 
+        
+    + Headers
+        
+            Authorization: Basic ZGVmYXVsdDp7QTY3QjkyRjQtMUJDRi00OThDLTgwMTctMTA4NTg0MkIzNjUwfQ==
+            
++ Response 200 (application/json; charset=utf-8)
+
+            {
+              "message": "OK"
+            }

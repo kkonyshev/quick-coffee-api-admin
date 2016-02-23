@@ -5,7 +5,7 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
 
 Управление поставщиками, торговыми точками и меню
 
-##  Поставщики [/Quick/QuickAdmin.svc/supplier]
+##  Поставщики [/admin/supplier]
 
 
 ### Список поставщиков [GET]
@@ -20,19 +20,25 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             {
               "data": [
                 {
-                  "supplierid": 2,
-                  "name": "Кафе Куриные потроха Ext 2.0",
-                  "description": "Отборные куриные головы и лапки",
-                  "sitelink": "http://kokoko.ru",
+                  "supplierid": 3,
+                  "name": "У Тимура",
+                  "description": "Мясо и зелень",
+                  "sitelink": "",
                   "places": [
                     {
-                      "placeid": 1,
+                      "placeid": 5,
                       "address": "ул. Богдана Титомира 11",
                       "latitude": 55.76844400,
                       "longitude": 37.65074300
                     },
                     {
-                      "placeid": 3,
+                      "placeid": 6,
+                      "address": "ул. Богдана Титомира 11",
+                      "latitude": 55.76844400,
+                      "longitude": 37.65074300
+                    },
+                    {
+                      "placeid": 7,
                       "address": "ул. Богдана Титомира 11",
                       "latitude": 55.76844400,
                       "longitude": 37.65074300
@@ -40,17 +46,17 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
                   ]
                 },
                 {
-                  "supplierid": 5,
-                  "name": "Авто Кафе 1",
-                  "description": "Отборные куриные головы и лапки",
-                  "sitelink": "http://kokoko1.ru",
+                  "supplierid": 7,
+                  "name": "Traveller's coffee",
+                  "description": "Сеть кофеен",
+                  "sitelink": "www.travelerscoffee.ru",
                   "places": []
                 },
                 {
-                  "supplierid": 7,
-                  "name": "Кафе Куриные потроха Ext",
-                  "description": "Отборные куриные головы и лапки",
-                  "sitelink": "http://kokoko.ru",
+                  "supplierid": 11,
+                  "name": "Я-Кафе",
+                  "description": "Найдется все",
+                  "sitelink": "http://ya.ru",
                   "places": []
                 }
               ]
@@ -66,22 +72,25 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             
     + Body
 
-            {  
-               "name":"Кафе Куриные потроха Ext 2.0",
-               "description":"Отборные куриные головы и лапки",
-               "sitelink":"http://kokoko.com.ru"
+            {
+                "name": "Z-Кафе",
+                "description": "Найдется все",
+                "sitelink": "http://ya.ru"
             }
             
 + Response 201 (application/json; charset=utf-8)
 
             {
               "data": {
-                "supplierid": 6
+                "supplierId": 14,
+                "name": "Z-Кафе",
+                "description": "Найдется все",
+                "sitelink": "http://ya.ru"
               }
             }
 
 
-##  Работа с поставщиком [/Quick/QuickAdmin.svc/supplier/{supplierId}]
+##  Работа с поставщиком [/admin/supplier/{supplierId}]
 + Parameters
     + supplierId: `1` (number, required) - idenfifier
 
@@ -95,29 +104,33 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             
 + Response 200 (application/json; charset=utf-8)
 
-            {  
-               "data":[  
-                  {  
-                     "supplierid":2,
-                     "name":"Кафе Куриные потроха Ext 2.0",
-                     "description":"Отборные куриные головы и лапки",
-                     "sitelink":"http://kokoko.ru",
-                     "places":[  
-                        {  
-                           "placeid":1,
-                           "address":"ул. Богдана Титомира 11",
-                           "latitude":55.76844400,
-                           "longitude":37.65074300
-                        },
-                        {  
-                           "placeid":4,
-                           "address":"ул. Богдана Титомира 11",
-                           "latitude":55.76844400,
-                           "longitude":37.65074300
-                        }
-                     ]
+            {
+              "data": {
+                "supplierid": 3,
+                "name": "У Тимура",
+                "description": "Мясо и зелень",
+                "sitelink": "",
+                "places": [
+                  {
+                    "placeid": 5,
+                    "address": "ул. Богдана Титомира 11",
+                    "latitude": 55.76844400,
+                    "longitude": 37.65074300
+                  },
+                  {
+                    "placeid": 6,
+                    "address": "ул. Богдана Титомира 11",
+                    "latitude": 55.76844400,
+                    "longitude": 37.65074300
+                  },
+                  {
+                    "placeid": 7,
+                    "address": "ул. Богдана Титомира 11",
+                    "latitude": 55.76844400,
+                    "longitude": 37.65074300
                   }
-               ]
+                ]
+              }
             }
 
 
@@ -130,11 +143,10 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             
     + Body
 
-            {  
-               "supplierid":2,
-               "name":"Кафе Куриные потроха Ext 3.0",
-               "description":"Отборные куриные головы и лапки",
-               "sitelink":"http://kokoko.com.ru"
+            {
+              "name": "Кафе Куриные потроха Ext 2.0",
+              "description": "Отборные куриные головы и лапки",
+              "sitelink": "http://kokoko.ru"
             }
             
 + Response 200 (application/json; charset=utf-8)
@@ -158,7 +170,7 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             }
 
 
-##  Торговые точки поставщика [/Quick/QuickAdmin.svc/supplier/{supplierId}/place]
+##  Торговые точки поставщика [/admin/supplier/{supplierId}/place]
 + Parameters
     + supplierId: `1` (number, required) - idenfifier
 
@@ -175,13 +187,19 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             {
               "data": [
                 {
-                  "placeid": 4,
+                  "placeid": 5,
                   "address": "ул. Богдана Титомира 11",
                   "latitude": 55.76844400,
                   "longitude": 37.65074300
                 },
                 {
-                  "placeid": 5,
+                  "placeid": 6,
+                  "address": "ул. Богдана Титомира 11",
+                  "latitude": 55.76844400,
+                  "longitude": 37.65074300
+                },
+                {
+                  "placeid": 7,
                   "address": "ул. Богдана Титомира 11",
                   "latitude": 55.76844400,
                   "longitude": 37.65074300
@@ -213,7 +231,7 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
             }
 
 
-##  Работа с торговой точкой [/Quick/QuickAdmin.svc/supplier/{supplierId}/place/{placeId}]
+##  Работа с торговой точкой [/admin/supplier/{supplierId}/place/{placeId}]
 + Parameters
     + supplierId: `1` (number, required) - idenfifier
     + placeId: `1` (number, required) - idenfifier
@@ -229,13 +247,11 @@ HOST: http://quick-cofee-dev.odin.pa.infobox.ru/
 + Response 200 (application/json; charset=utf-8)
 
             {
-              "data": [
-                {
-                  "address": "ул. Богдана Титомира 11",
-                  "latitude": 55.76844400,
-                  "longitude": 37.65074300
-                }
-              ]
+              "data": {
+                    "address": "ул. Богдана Титомира 11",
+                    "latitude": 55.76844400,
+                    "longitude": 37.65074300
+                  }
             }
 
 
